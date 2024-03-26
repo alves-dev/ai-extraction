@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ai-extraction
+  ai:
+    openai.api-key: your-api-key
