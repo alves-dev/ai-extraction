@@ -21,9 +21,19 @@ ext {
 }
 
 dependencies {
-	//implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	// data base
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+	// web api
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// ai
 	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+
+	// front
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
