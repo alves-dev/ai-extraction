@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<script src="audioRecorder.js"></script>
+<script src="optionsList.js"></script>
+<script src="buttonState.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Botões</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    #button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .word-button {
+        margin: 5px;
+        padding: 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .word-button:hover {
+        background-color: #0056b3;
+    }
+    #record-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    #record-button:hover {
+        background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+<div id="button-container"></div>
+<button id="record-button">Gravar Áudio e Enviar</button>
+<span id="contador">00:00</span>
+<div id="status-message"></div>
+<script>
+
+  // Simulação de uma requisição GET para obter a lista de palavras
+  // Substitua isso pela lógica real de requisição GET no seu servidor
+  const mockWordList = ['Java', 'JavaScript', 'HTML', 'CSS', 'Python', 'Kotlin'];
+  createButtons(mockWordList);
+
+// Variável de controle de estado para verificar se a gravação está em andamento
+let gravacaoEmAndamento = false;
+
+// Adicionar um evento de clique ao botão
+document.getElementById('record-button').addEventListener('click', function() {
+    // Chamar a função para alternar entre iniciar e parar a gravação
+    alternarGravacao();
+});
+
+</script>
+</body>
+</html>
