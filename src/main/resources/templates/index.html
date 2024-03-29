@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<script src="audioRecorder.js"></script>
+<script src="buttonState.js"></script>
+
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="ISO-8859-1">
+  <title>AI Extraction</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+  <style>
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .word-button {
+      margin: 5px;
+      padding: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #record-button {
+      display: block;
+      width: 90%;
+      margin: 0 auto; /* Adicionando margens automáticas */
+      padding: 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #record-button:hover {
+      background-color: #218838;
+    }
+
+    /* Estilo do botão selecionado */
+    .selected {
+      color: #2d63c8 !important; /* Usamos !important para garantir que este estilo tenha prioridade */
+      background-color: #cbb2b2 !important;
+    }
+  </style>
+
+</head>
+<body>
+<nav class="navbar navbar-dark" style="background-color: #010603;">
+  <a class="navbar-brand" href="#">
+    <img src="icon.jpeg" width="30" height="30" class="d-inline-block align-top" alt=""
+         style="margin-left: 10px">
+    <span style="color: #e8fbef; margin-left: 5px; font-weight: bold;">AI Extraction</span>
+  </a>
+</nav>
+
+
+<div class="button-container">
+  <!-- Aqui vamos iterar sobre a lista de temas e criar os botões de seleção -->
+  <div th:each="theme : ${themes}">
+    <button type="button" name="themeButton" class="word-button" th:text="${theme}"></button>
+  </div>
+</div>
+
+<button id="record-button">Gravar Áudio e Enviar</button>
+<span id="contador">00:00</span>
+<div id="status-message"></div>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  var domain = /*[[${domain}]]*/ null;
+  /*]]>*/
+</script>
+
+<script>
+  let gravacaoEmAndamento = false;
+  let themeSelected = '';
+
+  document.getElementById('record-button').addEventListener('click', function() {
+    // Chamar a função para alternar entre iniciar e parar a gravação
+    alternarGravacao();
+  });
+
+  // Adicionamos um event listener para cada botão
+  document.querySelectorAll('[name="themeButton"]').forEach(button => {
+    button.addEventListener('click', () => {
+      // Removemos a classe 'selected' de todos os botões
+      document.querySelectorAll('[name="themeButton"]').forEach(btn => btn.classList.remove('selected'));
+      // Adicionamos a classe 'selected' apenas ao botão clicado
+      button.classList.add('selected');
+      themeSelected = button.innerText;
+  });
+  });
+</script>
+
+</body>
+</html>
