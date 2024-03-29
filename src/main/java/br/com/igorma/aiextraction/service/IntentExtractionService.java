@@ -4,5 +4,5 @@ import br.com.igorma.aiextraction.model.IntentResponseList;
 
 public interface IntentExtractionService {
 
-  IntentResponseList speechToText(String text);
+  IntentResponseList intentExtractionToText(String text);
 }
