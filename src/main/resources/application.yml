@@ -5,3 +5,12 @@ spring:
     name: ai-extraction
   ai:
     openai.api-key: your-api-key
+  data:
+    mongodb:
+      uri: "mongodb://admin:password@localhost:27017/ai-extraction?authSource=admin"
+
+audio:
+  upload:
+    dir: uploads
+
+my-domain: http://localhost:8080
