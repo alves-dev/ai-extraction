@@ -1,6 +1,6 @@
 package br.com.igorma.aiextraction.controller;
 
-import java.util.List;
+import br.com.igorma.aiextraction.model.IntentType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +14,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        //TODO: nao deixar isso fixo aqui
-        List<String> themes = List.of("Medidas Corporais", "Alimentação", "Outros", "Carro", "Casa",
-            "Financeiro");
-
-        model.addAttribute("themes", themes);
+        model.addAttribute("themes", IntentType.getTypes());
         model.addAttribute("domain", myDomain);
         return "index";
     }
