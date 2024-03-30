@@ -1,7 +1,6 @@
 package br.com.igorma.aiextraction.service.impl;
 
-import br.com.igorma.aiextraction.database.Extraction;
-import br.com.igorma.aiextraction.database.ExtractionRepository;
+import br.com.igorma.aiextraction.event.EventIntentExtraction;
 import br.com.igorma.aiextraction.model.Intent;
 import br.com.igorma.aiextraction.model.IntentResponseList;
 import br.com.igorma.aiextraction.model.IntentType;
@@ -12,6 +11,7 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.openai.OpenAiChatClient;
 import org.springframework.ai.parser.BeanOutputParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 public class OpenAIIntentExtraction implements IntentExtractionService {
 
     private final OpenAiChatClient aiClient;
-    private final ExtractionRepository repository;
+    private final ApplicationEventPublisher eventPublisher;
 
     private static final String POMPT_STRING = """
             Considere o seguinte contexto,
@@ -32,9 +32,9 @@ public class OpenAIIntentExtraction implements IntentExtractionService {
             """;
 
     @Autowired
-    public OpenAIIntentExtraction(OpenAiChatClient aiClient, ExtractionRepository repository) {
+    public OpenAIIntentExtraction(OpenAiChatClient aiClient, ApplicationEventPublisher eventPublisher) {
         this.aiClient = aiClient;
-        this.repository = repository;
+        this.eventPublisher = eventPublisher;
     }
 
     @Override
@@ -69,8 +69,7 @@ public class OpenAIIntentExtraction implements IntentExtractionService {
         ChatResponse response = aiClient.call(prompt);
         IntentResponseList result = outputParser.parse(response.getResult().getOutput().getContent());
 
-        // TODO: lancar um evento
-        repository.save(new Extraction(prompt.getContents(), result, response.getMetadata().getUsage()));
+        eventPublisher.publishEvent(new EventIntentExtraction(prompt.getContents(), result, response.getMetadata().getUsage()));
         return result;
     }
 

@@ -1,5 +1,7 @@
 package br.com.igorma.aiextraction.controller;
 
+import br.com.igorma.aiextraction.infrastructure.ExtractionRepository;
+import br.com.igorma.aiextraction.infrastructure.SpeechToTextRepository;
 import br.com.igorma.aiextraction.model.IntentResponseList;
 import br.com.igorma.aiextraction.model.IntentType;
 import br.com.igorma.aiextraction.service.AIService;
@@ -9,17 +11,33 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("ai")
 public class AIController {
 
     private final IntentExtractionService service;
     private final AIService aiService;
+    private final ExtractionRepository extractionRepository;
+    private final SpeechToTextRepository speechToTextRepository;
 
     @Autowired
-    public AIController(IntentExtractionService service, AIService aiService) {
+    public AIController(IntentExtractionService service, AIService aiService, ExtractionRepository extractionRepository,
+                        SpeechToTextRepository speechToTextRepository) {
         this.service = service;
         this.aiService = aiService;
+        this.extractionRepository = extractionRepository;
+        this.speechToTextRepository = speechToTextRepository;
+    }
+
+    @GetMapping("/list/extractions")
+    public ResponseEntity<Object> extractions() {
+        List<Object> list = List.of(
+                extractionRepository.findAll(),
+                speechToTextRepository.findAll()
+        );
+        return ResponseEntity.ok(list);
     }
 
     @GetMapping("/extract-from-text")
