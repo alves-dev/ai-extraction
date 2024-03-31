@@ -1,21 +1,20 @@
-package br.com.igorma.aiextraction.domain.food;
+package br.com.igorma.aiextraction.domain.water;
 
 import br.com.igorma.aiextraction.domain.ThemeExtraction;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FoodExtraction implements ThemeExtraction {
+public class WaterExtraction implements ThemeExtraction {
 
     private static final String POMPT_STRING = """
-            Considere o seguinte contexto,
-            quero que você extraia do texto os alimentos que comi e qual a quantidade em gramas de cada um: {text}
+            Extraia do texto a quantidade de água em mililitro: {text}
                         
             {format}
             """;
 
     @Override
     public String getTheme() {
-        return "Alimentacao";
+        return "Agua";
     }
 
     @Override
@@ -26,14 +25,14 @@ public class FoodExtraction implements ThemeExtraction {
 
     @Override
     public Class<?> getReturnType() {
-        return FoodResponseList.class;
+        return WaterResponse.class;
     }
 
     @Override
     public void processResult(Object result) {
         // TODO: Implementar o processamento do resultado.
-        if (result instanceof FoodResponseList response) {
-            System.out.println(response.foods());
+        if (result instanceof WaterResponse response) {
+            System.out.println(response.amount());
         }
     }
 }

@@ -65,9 +65,9 @@ public class BodyExtraction implements ThemeExtraction {
 
     @Override
     public void processResult(Object result) {
-        if(result instanceof BodyResponseList){
-            BodyResponseList intentBody = (BodyResponseList) result;
-            // TODO: Implementar o processamento do resultado.
+        // TODO: Implementar o processamento do resultado.
+        if (result instanceof BodyResponseList response) {
+            System.out.println(response.measures());
         }
     }
 }

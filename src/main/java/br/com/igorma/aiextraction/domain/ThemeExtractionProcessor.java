@@ -29,7 +29,7 @@ public class ThemeExtractionProcessor {
 
         for (String beanName : beansOfType.keySet()) {
             ThemeExtraction themeExtraction = beansOfType.get(beanName);
-            if (Objects.equals(theme, themeExtraction.getTheme())) {
+            if (Objects.equals(theme.toLowerCase(), themeExtraction.getTheme().toLowerCase())) {
                 return themeExtraction;
             }
         }
