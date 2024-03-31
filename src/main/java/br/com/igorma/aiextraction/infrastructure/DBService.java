@@ -1,6 +1,6 @@
 package br.com.igorma.aiextraction.infrastructure;
 
-import br.com.igorma.aiextraction.event.EventIntentExtraction;
+import br.com.igorma.aiextraction.event.EventObjectExtractionFromText;
 import br.com.igorma.aiextraction.event.EventSpeechToText;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
@@ -19,7 +19,7 @@ public class DBService {
 
     @Async
     @EventListener
-    public void processEventIntentExtraction(EventIntentExtraction event){
+    public void processEventIntentExtraction(EventObjectExtractionFromText event){
         extractionRepository.save(new Extraction(event));
     }
 

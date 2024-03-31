@@ -2,12 +2,12 @@ package br.com.igorma.aiextraction.event;
 
 import org.springframework.ai.chat.metadata.Usage;
 
-public class EventIntentExtraction extends EventLLMBase {
+public class EventObjectExtractionFromText extends EventLLMBase {
     private final Object request;
     private final Object response;
     private final Usage usage;
 
-    public EventIntentExtraction(Object request, Object response, Usage usage) {
+    public EventObjectExtractionFromText(Object request, Object response, Usage usage) {
         super();
         this.request = request;
         this.response = response;

@@ -1,6 +1,6 @@
 package br.com.igorma.aiextraction.infrastructure;
 
-import br.com.igorma.aiextraction.event.EventIntentExtraction;
+import br.com.igorma.aiextraction.event.EventObjectExtractionFromText;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -20,7 +20,7 @@ public class Extraction {
     private Object response;
     private MyUsage usage;
 
-    public Extraction(EventIntentExtraction event) {
+    public Extraction(EventObjectExtractionFromText event) {
         this.dateExtraction = event.getDateExtraction();
         this.request = event.getRequest();
         this.response = event.getResponse();

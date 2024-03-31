@@ -1,7 +1,5 @@
 package br.com.igorma.aiextraction.service;
 
-import br.com.igorma.aiextraction.model.IntentResponseList;
-import br.com.igorma.aiextraction.model.IntentType;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,20 +16,20 @@ public class AIService {
     @Value("${audio.upload.dir}")
     private String uploadDir;
 
-    private final IntentExtractionService intentExtractionService;
+    private final ObjectExtractionService objectExtractionService;
     private final SpeechService speechService;
 
-    public AIService(IntentExtractionService service, SpeechService speechService) {
-        this.intentExtractionService = service;
+    public AIService(ObjectExtractionService objectExtractionService, SpeechService speechService) {
+        this.objectExtractionService = objectExtractionService;
         this.speechService = speechService;
     }
 
-    public IntentResponseList extractFromAudio(String filePath, IntentType intentType) {
-        if (intentType == null) {
-            throw new IllegalArgumentException("Intent type is required");
+    public Object extractFromAudio(String filePath, String theme) {
+        if (theme == null) {
+            throw new IllegalArgumentException("Theme is required");
         }
         String text = speechService.speechToText(filePath);
-        return intentExtractionService.intentExtractionToText(text, intentType);
+        return objectExtractionService.objectExtractionFromText(text, theme);
     }
 
     public String saveMultipartFile(MultipartFile file) {
