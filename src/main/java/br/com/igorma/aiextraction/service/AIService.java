@@ -33,6 +33,7 @@ public class AIService {
     }
 
     public String saveMultipartFile(MultipartFile file) {
+        // TODO: save file in cloud storage
         try {
             String suffix = LocalDateTime.now()
                     .toString()
