@@ -6,6 +6,7 @@ function gravarEEnviarAudio() {
     const statusMessageElement = document.getElementById('status-message');
     const contadorElement = document.getElementById('contador');
     const recordButton = document.getElementById('record-button');
+    const areaResult = document.getElementById('area-result');
     statusMessageElement.textContent = 'Iniciando gravação de áudio...';
 
     // Define o tempo total de gravação em segundos (por exemplo, 30 segundos)
@@ -59,7 +60,6 @@ function gravarEEnviarAudio() {
                     formData.append('audioFile', blob, 'audio.webm');
                     formData.append('themeSelected', themeSelected);
 
-                    // Substitua 'sua_url_de_destino' pela URL do seu endpoint de destino
                     fetch( domain + '/ai/upload-audio', {
                         method: 'POST',
                         body: formData
@@ -67,6 +67,9 @@ function gravarEEnviarAudio() {
                     .then(response => {
                         if (response.ok) {
                             statusMessageElement.textContent = 'Áudio enviado com sucesso.';
+                            response.text().then(text => {
+                                areaResult.textContent = text;
+                            });
                         } else {
                             statusMessageElement.textContent = 'Erro ao enviar áudio.';
                         }

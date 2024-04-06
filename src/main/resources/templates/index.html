@@ -20,7 +20,7 @@
       justify-content: center;
       margin-bottom: 20px;
     }
-    .word-button {
+    .theme-button {
       margin: 5px;
       padding: 20px;
       background-color: #007bff;
@@ -33,7 +33,19 @@
     #record-button {
       display: block;
       width: 90%;
-      margin: 0 auto; /* Adicionando margens automáticas */
+      margin: 0 auto; /* Adicionando margens automaticas */
+      padding: 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #area-result {
+      display: block;
+      width: 90%;
+      margin: 0 auto; /* Adicionando margens automaticas */
       padding: 15px;
       background-color: #28a745;
       color: white;
@@ -46,7 +58,7 @@
       background-color: #218838;
     }
 
-    /* Estilo do botão selecionado */
+    /* Estilo do botï¿½o selecionado */
     .selected {
       color: #2d63c8 !important; /* Usamos !important para garantir que este estilo tenha prioridade */
       background-color: #cbb2b2 !important;
@@ -65,15 +77,16 @@
 
 
 <div class="button-container">
-  <!-- Aqui vamos iterar sobre a lista de temas e criar os botões de seleção -->
   <div th:each="theme : ${themes}">
-    <button type="button" name="themeButton" class="word-button" th:text="${theme}"></button>
+    <button type="button" name="themeButton" class="theme-button" th:text="${theme}"></button>
   </div>
 </div>
 
-<button id="record-button">Gravar Áudio e Enviar</button>
+<button id="record-button">Record audio and send</button>
 <span id="contador">00:00</span>
 <div id="status-message"></div>
+
+<textarea id="area-result" rows="4" cols="30"></textarea>
 
 <script th:inline="javascript">
   /*<![CDATA[*/
@@ -86,16 +99,16 @@
   let themeSelected = '';
 
   document.getElementById('record-button').addEventListener('click', function() {
-    // Chamar a função para alternar entre iniciar e parar a gravação
+    // Chamar a funcao para alternar entre iniciar e parar a gravacao
     alternarGravacao();
   });
 
-  // Adicionamos um event listener para cada botão
+  // Adicionamos um event listener para cada botao
   document.querySelectorAll('[name="themeButton"]').forEach(button => {
     button.addEventListener('click', () => {
-      // Removemos a classe 'selected' de todos os botões
+      // Removemos a classe 'selected' de todos os botoes
       document.querySelectorAll('[name="themeButton"]').forEach(btn => btn.classList.remove('selected'));
-      // Adicionamos a classe 'selected' apenas ao botão clicado
+      // Adicionamos a classe 'selected' apenas ao botao clicado
       button.classList.add('selected');
       themeSelected = button.innerText;
   });
