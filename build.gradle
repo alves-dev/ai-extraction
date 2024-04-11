@@ -1,5 +1,3 @@
-import java.lang.String
-
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.4'
@@ -28,6 +26,9 @@ ext {
 dependencies {
 	// data base
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+	// rabbitMQ
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
 	// web api
 	implementation 'org.springframework.boot:spring-boot-starter-web'

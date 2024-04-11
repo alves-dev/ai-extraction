@@ -8,9 +8,19 @@ spring:
   data:
     mongodb:
       uri: "mongodb://admin:password@localhost:27017/ai-extraction?authSource=admin"
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 
 audio:
   upload:
     dir: uploads
 
 my-domain: http://localhost:8080
+persson.uuid: 7c3e2e4b-152d-48ff-a3db-c52b2d9d5752
+rabbitmq:
+  exchange: exchange
+  routingKey: routingKey

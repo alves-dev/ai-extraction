@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 public class AiExtractionApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AiExtractionApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AiExtractionApplication.class, args);
+    }
 
 }

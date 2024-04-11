@@ -1,6 +1,7 @@
 package br.com.igorma.aiextraction.controller;
 
 import br.com.igorma.aiextraction.domain.ThemeExtractionProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ public class HomeController {
 
     private final ThemeExtractionProcessor themeExtractionProcessor;
 
-
+    @Autowired
     public HomeController(ThemeExtractionProcessor themeExtractionProcessor) {
         this.themeExtractionProcessor = themeExtractionProcessor;
     }
