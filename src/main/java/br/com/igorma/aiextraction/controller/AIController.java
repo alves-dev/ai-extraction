@@ -39,8 +39,13 @@ public class AIController {
     }
 
     @GetMapping("/extract-from-text")
-    public ResponseEntity<Object> extractionObject(@RequestParam String text, @RequestParam String theme) {
+    public ResponseEntity<Object> extractionObjectGetForNavigator(@RequestParam String text, @RequestParam String theme) {
         return ResponseEntity.ok(service.objectExtractionFromText(text, theme));
+    }
+
+    @PostMapping("/extract-from-text")
+    public ResponseEntity<Object> extractionObject(@RequestParam String text, @RequestParam String themeSelected) {
+        return ResponseEntity.ok(service.objectExtractionFromText(text, themeSelected));
     }
 
     @PostMapping("/upload-audio")

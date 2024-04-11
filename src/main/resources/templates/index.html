@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <script src="audioRecorder.js"></script>
+<script src="textSend.js"></script>
 <script src="buttonState.js"></script>
 
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
@@ -27,6 +28,18 @@
       color: white;
       border: none;
       border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #send-text {
+      display: block;
+      width: 90%;
+      margin: 0 auto ; /* Adicionando margens automaticas */
+      padding: 15px;
+      background-color: #2e4834;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
@@ -86,7 +99,9 @@
 <span id="contador">00:00</span>
 <div id="status-message"></div>
 
+<!--TODO: melhorar isso ne -->
 <textarea id="area-result" rows="4" cols="30"></textarea>
+<button id="send-text">Send text</button>
 
 <script th:inline="javascript">
   /*<![CDATA[*/
@@ -97,6 +112,10 @@
 <script>
   let gravacaoEmAndamento = false;
   let themeSelected = '';
+
+  document.getElementById('send-text').addEventListener('click', function() {
+    sendText();
+  });
 
   document.getElementById('record-button').addEventListener('click', function() {
     // Chamar a funcao para alternar entre iniciar e parar a gravacao
