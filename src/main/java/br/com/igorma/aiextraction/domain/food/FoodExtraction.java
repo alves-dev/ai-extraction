@@ -15,7 +15,8 @@ public class FoodExtraction implements ThemeExtraction {
 
     private static final String POMPT_STRING = """
             Considere o seguinte contexto,
-            quero que você extraia do texto os alimentos que comi e qual a quantidade em gramas de cada um: {text}
+            quero que você extraia do texto os alimentos que comi e qual a quantidade, 
+            a quantidade sempre estara na unidade grama a palavra aparecendo ou não: {text}
                         
             {format}
             """;

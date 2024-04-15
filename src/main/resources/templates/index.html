@@ -35,11 +35,25 @@
       display: block;
       width: 90%;
       margin: 0 auto ; /* Adicionando margens automaticas */
+      margin-top: 10px;
       padding: 15px;
       background-color: #2e4834;
       color: white;
       border: none;
       border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #clear-text {
+      display: block;
+      width: 70%;
+      margin: 0 auto ; /* Adicionando margens automaticas */
+      margin-top: 50px;
+      padding: 15px;
+      background-color: #2e4834;
+      color: white;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
@@ -102,6 +116,7 @@
 <!--TODO: melhorar isso ne -->
 <textarea id="area-result" rows="4" cols="30"></textarea>
 <button id="send-text">Send text</button>
+<button id="clear-text">Clear text</button>
 
 <script th:inline="javascript">
   /*<![CDATA[*/
@@ -115,6 +130,11 @@
 
   document.getElementById('send-text').addEventListener('click', function() {
     sendText();
+  });
+
+  document.getElementById('clear-text').addEventListener('click', function() {
+    const areaResult = document.getElementById('area-result');
+    areaResult.value = '';
   });
 
   document.getElementById('record-button').addEventListener('click', function() {

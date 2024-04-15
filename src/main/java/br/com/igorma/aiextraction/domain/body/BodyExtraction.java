@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class BodyExtraction implements ThemeExtraction {
 
     private static final String POMPT_STRING = """

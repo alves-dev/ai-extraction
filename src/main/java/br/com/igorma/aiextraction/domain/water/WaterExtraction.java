@@ -14,7 +14,8 @@ public class WaterExtraction implements ThemeExtraction {
     private final UUIDService uuidService;
 
     private static final String POMPT_STRING = """
-            Extraia do texto a quantidade de água em mililitro: {text}
+            Extraia do texto a quantidade de água em mililitro,
+            a quantidade sempre estara na unidade mililitro a palavra aparecendo ou não: {text}
                         
             {format}
             """;
