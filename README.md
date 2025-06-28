@@ -1,11 +1,38 @@
-# AI Extraction
+<!--
+template_name=head-code
+template_version=v1
+-->
 
-Projeto que visa usar IA's para extrair informações de áudio e mensagens de texto
+<h1 align="center">AI Extraction</h1>
+
+<p align="center">
+  Projeto que visa usar IA's para extrair informações de áudio e mensagens de texto<br>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-maintenance-blue.svg" alt="status">
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/topics:-grey"> 
+<img src="https://img.shields.io/badge/ai-lightgrey">
+<img src="https://img.shields.io/badge/java-lightgrey">
+<img src="https://img.shields.io/badge/spring-lightgrey">
+<img src="https://img.shields.io/badge/mongodb-lightgrey">
+<img src="https://img.shields.io/badge/amqp-lightgrey">
+<img src="https://img.shields.io/badge/docker-lightgrey">
+<img src="https://img.shields.io/badge/rabbitmq-lightgrey">
+<img src="https://img.shields.io/badge/gradle-lightgrey">
+<img src="https://img.shields.io/badge/thymeleaf-lightgrey">
+</p>
+
+<hr>
+
 
 O objetivo do projeto é entender os possíveis potências dos LLM.
 
 ### Caso de uso
-Dado um áudio, o transformar em texto, e depois extrair dele um `json` 
+Dado um áudio, o transformar em texto, e depois extrair dele um `json`
 contendo as informações; logicamente com o json em mãos sua criatividade é o limite.
 
 ### Como foi feito
@@ -15,7 +42,7 @@ que disponibiliza uma série de classes prontas para lidar com vários modelos, 
 Para a transcrição do áudio estou usando o modelo `whisper-1`, e para a análise do texto uso o `gpt-3.5-turbo-0125`.
 
 ### Detalhes de implementação
-Nao tem segredo para realizar a transcrição, basta enviar o áudio para a API utilizando a classe `OpenAiAudioTranscriptionClient` 
+Nao tem segredo para realizar a transcrição, basta enviar o áudio para a API utilizando a classe `OpenAiAudioTranscriptionClient`
 e voce ira obter o texto de retorno.
 
 Já para a extração do `json` voce deve usar a `OpenAiChatClient`; e funciona assim:
@@ -44,5 +71,16 @@ O projeto foi construído de uma forma que os modelos utilizados possam ser subs
 que tal tentar outros modelos no mercado?
 
 E que tal treinar o seu próprio modelo?
-O projeto salva todas as interações no banco de dados [MongoDB](https://www.mongodb.com/pt-br), 
+O projeto salva todas as interações no banco de dados [MongoDB](https://www.mongodb.com/pt-br),
 assim voce tem os dados que podem ser utilizados para tal.
+<!--
+template_name=footer-default
+template_version=v1
+-->
+
+---
+<p align="center">
+   <img src="https://img.shields.io/badge/licença-GPL%203-blue.svg" alt="license">
+</p>
+
+**Atualizado em:** 2025-06-28 18:32
